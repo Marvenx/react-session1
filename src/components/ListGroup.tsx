@@ -1,19 +1,29 @@
 import { useState } from "react";
 
-const ListGroup = () => {
-  let items: string[] = ["item1", "item2", "item3"];
-  const [selectedIndex,setSelectedIndex] = useState<number>(-1); // Hook
+interface ListGroupProps {
+  items: string[];
+  heading: string;
+  onSelect?: (item: string) => void;
+}
+
+const ListGroup = ({ items, heading, onSelect }: ListGroupProps) => {
+  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
   return (
     <>
+      <h1>{heading}</h1>
       {items.length === 0 && <p>Loading</p>}
       <ul className="list-group">
         {items.map((item: string, index) => (
           <li
-            key={item}
-            className={selectedIndex === index ? "list-group-item active" : "list-group-item"}
+            key={index}
+            className={
+              selectedIndex === index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
             onClick={() => {
               setSelectedIndex(index);
-              console.log(selectedIndex);
+              onSelect?(item)
             }}
           >
             {item}
