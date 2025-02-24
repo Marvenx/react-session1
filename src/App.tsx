@@ -11,6 +11,7 @@ function App() {
       <ListGroup
         items={items1}
         heading={heading1}
+        onSelect={handleSelect}
       ></ListGroup>
       <br />
       <ListGroup
