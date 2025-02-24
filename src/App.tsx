@@ -17,7 +17,7 @@ function App() {
       <ListGroup
         items={items2}
         heading={heading2}
-        onSelect={handleSelect}
+        onSelect={handleSelect} //comment
       ></ListGroup>
     </>
   );
